@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    tools:context=".ui.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- 标题 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="天气查询"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_color"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 搜索框 -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:boxStrokeColor="@color/primary_color"
+            app:hintTextColor="@color/primary_color">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入城市名称（如：北京、上海）"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textSize="16sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- 搜索按钮 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="查询天气"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="8dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 进度条 -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp" />
+
+        <!-- 天气信息卡片 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- 天气图标 -->
+                <ImageView
+                    android:id="@+id/ivWeatherIcon"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="16dp"
+                    android:contentDescription="天气图标"
+                    android:background="@color/primary_color"
+                    android:src="@android:drawable/ic_menu_today" />
+
+                <!-- 城市位置 -->
+                <TextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="位置"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color"
+                    android:gravity="center"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- 温度 -->
+                <TextView
+                    android:id="@+id/tvTemperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="--°C"
+                    android:textSize="48sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_color"
+                    android:gravity="center"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- 天气描述 -->
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="天气描述"
+                    android:textSize="18sp"
+                    android:textColor="@color/text_color_secondary"
+                    android:gravity="center"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- 分隔线 -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- 详细信息 -->
+                <TextView
+                    android:id="@+id/tvFeelsLike"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="体感: --°C"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_color"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvHumidity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="湿度: --%"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_color"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvWind"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="风速: -- km/h"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_color"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- 分隔线 -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- 未来预报标题 -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="未来预报"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- 未来预报 -->
+                <TextView
+                    android:id="@+id/tvForecast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="暂无预报数据"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_color_secondary"
+                    android:lineSpacingExtra="4dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- 支持的城市列表 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="支持的城市：北京、上海、广州、深圳、杭州、成都、武汉、西安、重庆、南京、天津、苏州、青岛、大连、厦门、长沙、郑州、济南、沈阳、哈尔滨"
+            android:textSize="12sp"
+            android:textColor="@color/text_color_secondary"
+            android:layout_marginTop="16dp"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</ScrollView>
